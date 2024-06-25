@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
-  <display-name>MyPortal</display-name>
+  <display-name>hellospring</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -10,17 +10,10 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-  
+  <!-- 서블릿 등록 -->
   <servlet>
   	<servlet-name>spring</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<!--  Spring Context 설정 파일 
-  		기본 설정 파일의 이름: 서블릿명-servlet.xml
-  		기본 위치, 기본 파일명이 아닐 경우, -->
-  		<!--init-param>
-  			<param-name>contextConfigLocation</param-name>
-  			<param-value>/WEB-INF/spring-servlet.xml</param-value>
-  		</init-param-->
   </servlet>
   
   <servlet-mapping>
@@ -28,16 +21,16 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
-  
-  <!--  Context Load Listner 등록 -->
+  <!-- Context Loader Listener 등록 -->
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!--  Listner 설정 정보 -->
+  <!-- Listener 설정 정보 -->
   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
+  
   <!-- Encoding Filter -->
   <filter>
   	<filter-name>encodingFilter</filter-name>
@@ -58,8 +51,7 @@
   
   <!-- 공통 에러 페이지: Spring 앱 바깥에서 일어난 예외 -->
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/views/errors/error.404.jsp</location>
+    <error-code>404</error-code>
+    <location>/views/errors/error.404.jsp</location>
   </error-page>
-  
 </web-app>
