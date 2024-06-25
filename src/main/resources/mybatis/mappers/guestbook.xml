@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guestbook">
+<resultMap id="GuestBookResultMap" type="himedia.myportal.repositories.vo.GuestBookVo">
+        <id property="no" column="no" />
+        <result property="name" column="name" />
+        <result property="password" column="password" />
+        <result property="content" column="content" />
+        <result property="reg_date" column="reg_date" />
+    </resultMap>
+    <!-- 목록 -->
+    <select id="selectAll" resultType = "himedia.myportal.repositories.vo.GuestBookVo">
+        SELECT no, name, content, reg_date 
+        FROM guestbook
+        ORDER BY reg_date DESC
+    </select>
+	
+	<!-- 게시물 입력(INSERT) -->
+	<insert id = "insert" parameterType = "GuestBookVo">
+		<!-- 시퀀스로부터 pk를 받아오는 쿼리(메인 쿼리 이전 수행: Oracle) -->
+		<!--  selectKey keyProperty = "no" resultType = "Long" order = "BEFORE">
+			SELECT seq_guestbook.no.nextval FROM dual
+		</selectKey-->
+		INSERT into GuestBook (name,password, content)
+		VALUES(#{name}, #{password}, #{content})
+	</insert>
+
+	<!-- 게시물 삭제 (DELETE) -->
+	<delete id = "delete" parameterType = "GuestBookVo">
+		DELETE FROM GuestBook
+		WHERE no = #{no} AND password = #{password}
+	</delete>
+	 <!-- 수정 -->
+    <update id="updateById" parameterType="GuestBookVo">
+        UPDATE GuestBook
+        SET name = #{name}, password = #{password}, content = #{content}
+        WHERE no = #{no}
+    </update>
+
+    <!-- 특정 항목 조회 -->
+    <select id="selectById" parameterType="long" resultMap="GuestBookResultMap">
+        SELECT no, name, password, content, reg_date
+        FROM GuestBook
+        WHERE no = #{no}
+    </select>
+
+
+</mapper>

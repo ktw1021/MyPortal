@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+@import "mysite.css";
+
+#list			{ margin:20px auto;	width:540px; }
+
+#list form, 
+#list table	{ width:100% }
+
+#list table,	
+#list table td { border:1px solid #333 }
+#list table td { padding:5px }
+
+#list ul		{ width:100%; margin-top:20px }
+#list ul li	{ width:100%; margin-top:10px }
+
+
+#list.delete-form	{ height:200px }
+#list.delete-form form {
+	width:300px;
+	padding:10px;
+	border:1px solid #666;
+	border-radius: 10px;
+	margin:50px auto;
+}
+#list.delete-form a	{ display:block; margin:20px auto; width:110px }
+
+#list.delete-message p	{ padding:100px; height:50px; text-align:center }
+
+#list textarea#content	{ width: 100%; border:none; height: 100px; resize: none; outline: none; }
