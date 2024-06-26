@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+    <!-- 게시물 작성 -->
+    <insert id="insert" parameterType="BoardVo">
+        INSERT INTO BoardUser (title, name, content)
+        VALUES (#{title}, #{name}, #{content})
+    </insert>
+    
+    <!-- 목록 -->
+    <select id="selectAll" resultType="BoardVo">
+        SELECT no, 
+        		title, 
+        		name, 
+        		created_date as createdDate, 
+        		view_count as viewCount, 
+        		content
+        FROM BoardUser
+        ORDER BY no DESC
+    </select>
+    
+    <!-- 게시물 읽기 -->
+    <select id="getContent" parameterType="long" resultType="BoardVo">
+        SELECT no, 
+        		title, 
+        		name, 
+        		created_date as createdDate, 
+        		view_count as viewCount, 
+        		content
+        FROM BoardUser
+        WHERE no = #{value}
+    </select>
+    
+    <!-- 조회수 증가 -->
+    <update id="increaseViewcount" parameterType="long">
+        UPDATE BoardUser
+        SET view_count = view_count + 1
+        WHERE no = #{value}
+    </update>
+    
+    <!-- 게시물 수정 -->
+    <update id="update" parameterType="BoardVo">
+        UPDATE BoardUser
+        SET title = #{title}, content = #{content}
+        WHERE no = #{no}
+    </update>
+    
+    <delete id="delete" parameterType="long">
+        DELETE FROM BoardUser
+        WHERE no = #{value}
+    </delete>
+    
+</mapper>

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>My Homepage</title>
+    <title>게시물 수정</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/mysite.css'/>">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/home.css'/>">
@@ -18,28 +18,29 @@
     <div id="wrapper">
         <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
         <div id="content">
-            <form name="registerForm" method="post" action="<c:url value='/board/write'/>" onsubmit="return validateForm('registerForm')">
+            <form name="editForm" method="post" action="<c:url value='/board/edit'/>" onsubmit="return validateForm('editForm')">
+                <input type="hidden" name="no" value="${board.no}">
                 <table border="1" width="580">
                     <tr>
-                        <td colspan="2"><h3>게시판</h3></td>
+                        <td colspan="2"><h3>게시물 수정</h3></td>
                     </tr>
                     <tr>
-                        <th colspan="2">글쓰기</th>
+                        <th colspan="2">수정하기</th>
                     </tr>
                     <tr>
                         <td>제목</td>
-                        <td><input type="text" name="title" value=""></td>
+                        <td><input type="text" name="title" value="${board.title}"></td>
                     </tr>
                     <tr>
                         <td>내용</td>
                         <td>
-                            <textarea id="content" name="content"></textarea>
+                            <textarea id="content" name="content">${board.content}</textarea>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <a href="<c:url value='/board/list'/>">취소</a>
-                            <input type="submit" value="등록">
+                            <input type="submit" value="수정">
                         </td>    
                     </tr>
                 </table>
