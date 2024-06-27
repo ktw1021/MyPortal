@@ -3,8 +3,8 @@ package himedia.myportal.repositories.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import himedia.myportal.repositories.vo.BoardVo;
 @Repository
 public class BoardDaoImpl implements BoardDao {
 
-    private static final Log logger = LogFactory.getLog(BoardDaoImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(BoardDaoImpl.class);
 
     @Autowired
     private SqlSession sqlSession;

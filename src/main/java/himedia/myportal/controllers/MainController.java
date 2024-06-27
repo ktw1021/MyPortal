@@ -1,5 +1,7 @@
 package himedia.myportal.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +12,11 @@ import himedia.myportal.exceptions.MainControllerException;
 
 @Controller
 public class MainController {
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping("/main") 
     public String main(Model model) {
+    	logger.debug("마이포털 메인 페이지");
         // 모델에 필요한 기본 속성을 추가할 수 있습니다.
         // model.addAttribute("key", "value");
         return "home";
