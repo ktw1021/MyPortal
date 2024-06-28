@@ -14,12 +14,17 @@
 		<typeAlias
 			type="himedia.myportal.repositories.vo.BoardVo"
 			alias="BoardVo" />
+		<typeAlias
+			type="himedia.myportal.repositories.vo.PhoneBookVo"
+			alias="PhoneBookVo" />
+			
 	</typeAliases>
 	<!-- 테이블 정보와 객체 정보 매핑을 위한 매퍼 -->
 	<mappers>
 		<mapper resource="/mybatis/mappers/guestbook.xml" />
 		<mapper resource="/mybatis/mappers/users.xml" />
 		<mapper resource="/mybatis/mappers/board.xml" />
+		<mapper resource="/mybatis/mappers/phonebook.xml" />
 	</mappers>
 	
 </configuration>
