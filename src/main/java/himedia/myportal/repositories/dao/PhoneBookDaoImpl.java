@@ -16,7 +16,7 @@ public class PhoneBookDaoImpl implements PhoneBookDao {
 
     @Override
     public List<PhoneBookVo> selectAll() {
-        return sqlSession.selectList(NAMESPACE + "selectAll");
+    	return sqlSession.selectList(NAMESPACE + "selectAll");
     }
 
     @Override

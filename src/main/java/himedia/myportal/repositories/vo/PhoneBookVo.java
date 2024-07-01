@@ -9,16 +9,18 @@ public class PhoneBookVo {
     public PhoneBookVo() {
     	
     }
-        
-    public PhoneBookVo(String phName, String phNum, String hmNum) {
-		super();
+    
+    public PhoneBookVo(Long phId) {
+		this.phId = phId;
+	}
+
+	public PhoneBookVo(String phName, String phNum, String hmNum) {
 		this.phName = phName;
 		this.phNum = phNum;
 		this.hmNum = hmNum;
 	}
 
 	public PhoneBookVo(Long phId, String phName, String phNum, String hmNum) {
-		super();
 		this.phId = phId;
 		this.phName = phName;
 		this.phNum = phNum;

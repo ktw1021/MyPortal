@@ -19,7 +19,7 @@
     <div id="wrapper">
         <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
         <div id="content">
-            <form name="editForm" method="post" action="<c:url value='/board/edit'/>" onsubmit="return validateForm('editForm')">
+            <form name="editForm" method="post" action="<c:url value='/board/edit'/>" enctype="multipart/form-data" onsubmit="return validateForm('editForm')">
                 <input type="hidden" name="no" value="${board.no}">
                 <table border="1" width="580">
                     <tr>
@@ -36,6 +36,18 @@
                         <td>내용</td>
                         <td>
                             <textarea id="content" name="content">${board.content}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>파일 업로드</td>
+                        <td><input type="file" name="file"></td>
+                    </tr>
+                    <tr>
+                        <td>현재 파일</td>
+                        <td>
+                            <c:if test="${board.filePath != null}">
+                                <a href="<c:url value='/download?filePath=${board.filePath}'/>">현재 파일 다운로드</a>
+                            </c:if>
                         </td>
                     </tr>
                     <tr>

@@ -44,6 +44,15 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+   					 <td>파일</td>
+   					 <td>
+       					 <c:if test="${board.filePath != null}">
+           				 <a href="<c:url value='/download?filePath=${board.filePath}'/>">Download</a>
+        				 </c:if>
+    				</td>
+				</tr>
+                    
             </table>
             <div class="button-container">
                 <a href="<c:url value='/board/list'/>" class="btn">글목록</a>

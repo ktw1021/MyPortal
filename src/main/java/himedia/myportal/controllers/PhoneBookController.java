@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.myportal.repositories.vo.PhoneBookVo;
 import himedia.myportal.services.PhoneBookService;
@@ -20,7 +20,6 @@ public class PhoneBookController {
     @Autowired
     private PhoneBookService phoneBookService;
 
-    // 디폴트 페이지 설정
     @GetMapping({"", "/"})
     public String defaultView(Model model) {
         return list(model);
@@ -44,8 +43,8 @@ public class PhoneBookController {
         return "redirect:/phonebook/list";
     }
 
-    @GetMapping("/delete")
-    public String delete(@RequestParam("phId") Long phId) {
+    @GetMapping("/delete/{phId}")
+    public String delete(@PathVariable("phId") Long phId, Model model) {
         phoneBookService.deletePhoneBook(phId);
         return "redirect:/phonebook/list";
     }

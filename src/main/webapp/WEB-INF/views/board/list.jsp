@@ -29,6 +29,7 @@
                     <th>글쓴이</th>
                     <th>조회수</th>
                     <th>작성일</th>
+                    <th>파일</th>
                     <th>수정 / 삭제</th>
                 </tr>
                 <c:forEach var="board" items="${boards}">
@@ -37,8 +38,11 @@
                         <td><a href="<c:url value='/board/view/${board.no}'/>">${board.title}</a></td>
                         <td>${board.name}</td>
                         <td>${board.viewCount}</td>
+                        <td><fmt:formatDate value="${board.createdDate}" pattern="yyyy-MM-dd HH:mm"/></td>
                         <td>
-                            <fmt:formatDate value="${board.createdDate}" pattern="yyyy-MM-dd HH:mm"/>
+                            <c:if test="${board.filePath != null}">
+                                <a href="${board.filePath}" target="_blank">View</a>
+                            </c:if>
                         </td>
                         <td>
                             <c:if test="${board.name == authUser.name}">
@@ -49,7 +53,7 @@
                     </tr>
                 </c:forEach>
                 <tr>
-                    <td colspan="6"><a href="<c:url value='/board/write'/>" class="btn">글쓰기</a></td>
+                    <td colspan="7"><a href="<c:url value='/board/write'/>" class="btn">글쓰기</a></td>
                 </tr>
             </table>
         </div>

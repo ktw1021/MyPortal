@@ -18,32 +18,37 @@
     <div id="wrapper">
         <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
         <div id="content">
-            <form name="registerForm" method="post" action="<c:url value='/board/write'/>" onsubmit="return validateForm('registerForm')">
-                <table border="1" width="580">
-                    <tr>
-                        <td colspan="2"><h3>게시판</h3></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">글쓰기</th>
-                    </tr>
-                    <tr>
-                        <td>제목</td>
-                        <td><input type="text" name="title" value=""></td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td>
-                            <textarea id="content" name="content"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <a href="<c:url value='/board/list'/>">취소</a>
-                            <input type="submit" value="등록">
-                        </td>    
-                    </tr>
-                </table>
-            </form>
+           <form name="registerForm" method="post" action="<c:url value='/board/write'/>" enctype="multipart/form-data" onsubmit="return validateForm('registerForm')">
+    <table border="1" width="580">
+        <tr>
+            <td colspan="2"><h3>게시판</h3></td>
+        </tr>
+        <tr>
+            <th colspan="2">글쓰기</th>
+        </tr>
+        <tr>
+            <td>제목</td>
+            <td><input type="text" name="title" value=""></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>
+                <textarea id="content" name="content"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>파일 업로드</td>
+            <td><input type="file" name="file"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="<c:url value='/board/list'/>">취소</a>
+                <input type="submit" value="등록">
+            </td>    
+        </tr>
+    </table>
+</form>
+
         </div>
         <%@ include file="/WEB-INF/views/includes/footer.jsp" %>
     </div>

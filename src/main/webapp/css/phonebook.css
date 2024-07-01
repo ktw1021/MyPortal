@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.phonebook-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.phonebook-table th, .phonebook-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.phonebook-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.phonebook-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.phonebook-table tr:hover {
+    background-color: #ddd;
+}
+
+.add-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-link:hover {
+    background-color: #555;
+}

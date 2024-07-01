@@ -18,12 +18,12 @@ public class PhoneBookServiceImpl implements PhoneBookService {
     }
 
     @Override
-    public boolean addPhoneBook(PhoneBookVo phoneBook) {
-        return phoneBookDao.insert(phoneBook) == 1;
+    public void addPhoneBook(PhoneBookVo phoneBook) {
+        phoneBookDao.insert(phoneBook);
     }
 
     @Override
-    public boolean deletePhoneBook(Long phId) {
-        return phoneBookDao.delete(phId) == 1;
+    public void deletePhoneBook(Long phId) {
+        phoneBookDao.delete(phId);
     }
 }

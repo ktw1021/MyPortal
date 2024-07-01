@@ -5,12 +5,14 @@
 
 <mapper namespace="phonebook">
     <select id="selectAll" resultType="himedia.myportal.repositories.vo.PhoneBookVo">
-        SELECT * FROM phone_book
+        SELECT PH_ID as phId, PH_NAME as phName, PH_NUM as phNum, HM_NUM as hmNum 
+        FROM phone_book
+        ORDER By phID
     </select>
 
     <insert id="insert">
-        INSERT INTO phone_book (PH_ID, PH_NAME, PH_NUM, HM_NUM)
-        VALUES (#{phId}, #{phName}, #{phNum}, #{hmNum})
+        INSERT INTO phone_book (PH_NAME, PH_NUM, HM_NUM)
+        VALUES (#{phName}, #{phNum}, #{hmNum})
     </insert>
 
     <delete id="delete">

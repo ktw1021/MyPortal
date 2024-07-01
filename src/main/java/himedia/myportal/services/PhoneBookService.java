@@ -5,6 +5,6 @@ import himedia.myportal.repositories.vo.PhoneBookVo;
 
 public interface PhoneBookService {
     List<PhoneBookVo> getList();
-    boolean addPhoneBook(PhoneBookVo phoneBook);
-    boolean deletePhoneBook(Long phId);
+    void addPhoneBook(PhoneBookVo phoneBook);
+    void deletePhoneBook(Long phId);
 }

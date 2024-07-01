@@ -9,6 +9,7 @@ public class BoardVo {
     private String content;
     private Date createdDate;
     private int viewCount;
+    private String filePath;
 
     // Getters and Setters
     public Long getNo() {
@@ -57,5 +58,13 @@ public class BoardVo {
 
     public void setViewCount(int viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }
