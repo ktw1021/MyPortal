@@ -14,7 +14,7 @@
               http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="himedia.myportal">
+    <context:component-scan base-package="himedia.myportal, learnbyteaching.todos.controllers">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
@@ -49,6 +49,13 @@
             <bean class="himedia.myportal.interceptors.AuthInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
+
+<!-- MessageSource: 반드시 bean id를 messageSource로 설정해야 한다 -->
+<bean id = "messageSource"
+	class = "org.springframework.context.support.ResourceBundleMessageSource">
+	<property name = "basenames" value = "messages/messages_ko" />
+	<property name = "defaultEncoding" value = "UTF-8" />
+</bean>
 
    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
     <!-- 필요한 설정을 여기에 추가하세요 -->

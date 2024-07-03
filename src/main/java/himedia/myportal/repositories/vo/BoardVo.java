@@ -6,12 +6,14 @@ public class BoardVo {
     private Long no;
     private String title;
     private String name;
-    private String content;
     private Date createdDate;
     private int viewCount;
+    private String content;
     private String filePath;
+    private String fileName; // 새로운 필드
 
-    // Getters and Setters
+    // Getters and Setters for all fields including the new filename field
+
     public Long getNo() {
         return no;
     }
@@ -36,14 +38,6 @@ public class BoardVo {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -60,11 +54,27 @@ public class BoardVo {
         this.viewCount = viewCount;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getFilePath() {
         return filePath;
     }
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFilename(String fileName) {
+        this.fileName = fileName;
     }
 }

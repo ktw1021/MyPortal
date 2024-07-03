@@ -14,10 +14,10 @@
 <body>
 <div id="container">
     <%@ include file="/WEB-INF/views/includes/header.jsp" %>
-
     <div id="wrapper">
+ 
         <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
-        <div id="content">
+       <div id="content">
            <form name="registerForm" method="post" action="<c:url value='/board/write'/>" enctype="multipart/form-data" onsubmit="return validateForm('registerForm')">
     <table border="1" width="580">
         <tr>

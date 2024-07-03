@@ -5,8 +5,8 @@
 <mapper namespace="board">
     <!-- 게시물 작성 -->
     <insert id="insert" parameterType="BoardVo">
-        INSERT INTO BoardUser (title, name, content, file_path)
-        VALUES (#{title, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{filePath, jdbcType=VARCHAR})
+        INSERT INTO BoardUser (title, name, content, file_path, fileName)
+        VALUES (#{title, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{filePath, jdbcType=VARCHAR}, #{fileName})
     </insert>
     
     <!-- 목록 -->
@@ -17,7 +17,8 @@
         		created_date as createdDate, 
         		view_count as viewCount, 
         		content,
-        		file_path as filePath
+        		file_path as filePath,
+        		fileName
         FROM BoardUser
         ORDER BY no DESC
     </select>
@@ -30,7 +31,8 @@
         		created_date as createdDate, 
         		view_count as viewCount, 
         		content,
-        		file_path as filePath
+        		file_path as filePath,
+        		fileName
         FROM BoardUser
         WHERE no = #{value}
     </select>
@@ -45,7 +47,7 @@
     <!-- 게시물 수정 -->
     <update id="update" parameterType="BoardVo">
         UPDATE BoardUser
-        SET title = #{title, jdbcType=VARCHAR}, content = #{content, jdbcType=VARCHAR}, file_path = #{filePath, jdbcType=VARCHAR}
+        SET title = #{title, jdbcType=VARCHAR}, content = #{content, jdbcType=VARCHAR}, file_path = #{filePath, jdbcType=VARCHAR}, filename = #{fileName}
         WHERE no = #{no, jdbcType=BIGINT}
     </update>
     

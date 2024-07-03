@@ -10,18 +10,18 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/mysite.css'/>">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/home.css'/>">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/board.css'/>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script type="text/javascript" src="<c:url value='/javascript/board.js'/>"></script>
 </head>
 <body>
 <div id="container">
     <%@ include file="/WEB-INF/views/includes/header.jsp" %>
-
+    <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
     <div id="wrapper">
-        <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
         <div id="content">
             <table class="tbl-ex">
                 <tr>
-                    <td colspan="6"><h3>게시판</h3></td>
+                    <td colspan="7"><h3>게시판</h3></td>
                 </tr>
                 <tr>
                     <th>번호</th>
@@ -41,7 +41,7 @@
                         <td><fmt:formatDate value="${board.createdDate}" pattern="yyyy-MM-dd HH:mm"/></td>
                         <td>
                             <c:if test="${board.filePath != null}">
-                                <a href="${board.filePath}" target="_blank">View</a>
+                                <img src="${pageContext.request.contextPath}/upload-images/${board.fileName}" alt="Image" class="thumbnail-preview"/>
                             </c:if>
                         </td>
                         <td>

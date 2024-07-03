@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import himedia.myportal.repositories.vo.BoardVo;
-import himedia.myportal.repositories.vo.UserVo;
 import himedia.myportal.services.BoardService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
-	 private static final String UPLOAD_DIR = "C:/uploads/";
-	
+    private static final String UPLOAD_DIR = "C:/uploads/";
+
     @Autowired
     private BoardService boardService;
 
@@ -48,27 +47,25 @@ public class BoardController {
     }
 
     @PostMapping("/write")
-    public String write(
-            @ModelAttribute BoardVo board, 
-            @RequestParam("file") MultipartFile file,
-            @SessionAttribute("authUser") UserVo authUser,
-            Model model) {
+    public String write(@ModelAttribute BoardVo board, @RequestParam("file") MultipartFile file, HttpSession session) {
+        // 로그인한 사용자의 이름 가져오기
+        String userName = (String) session.getAttribute("authUserName");
+        board.setName(userName);
 
-        // 로그인한 사용자의 이름 설정
-        board.setName(authUser.getName());
-
+        // 파일 업로드 처리
         if (!file.isEmpty()) {
+            String fileName = file.getOriginalFilename();
+            String filePath = UPLOAD_DIR + fileName;
+
             try {
-                String fileName = file.getOriginalFilename();
-                File filePath = new File(UPLOAD_DIR + fileName);
-                file.transferTo(filePath);
-                board.setFilePath("/uploads/" + fileName);
+                file.transferTo(new File(filePath));
+                board.setFilePath("/uploads/" + fileName);  // 웹 경로 설정
+                board.setFilename(fileName); // 파일명 설정
             } catch (IOException e) {
                 e.printStackTrace();
-                model.addAttribute("error", "File upload failed");
-                return "board/write";
             }
         }
+
         boardService.write(board);
         return "redirect:/board/list";
     }
@@ -90,6 +87,19 @@ public class BoardController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute BoardVo board, @RequestParam("file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            String fileName = file.getOriginalFilename();
+            String filePath = UPLOAD_DIR + fileName;
+
+            try {
+                file.transferTo(new File(filePath));
+                board.setFilePath("/uploads/" + fileName);  // 웹 경로 설정
+                board.setFilename(fileName); // 파일명 설정
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         boardService.updateWithFile(board, file);
         return "redirect:/board/view/" + board.getNo();
     }

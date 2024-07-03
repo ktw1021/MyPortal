@@ -9,17 +9,17 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/mysite.css'/>">
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/home.css'/>">
-    <link href="<c:url value='/css/board.css' />" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="<c:url value='/css/board.css'/>">
     <script type="text/javascript" src="<c:url value='/javascript/board.js'/>"></script>
 </head>
 <body>
 <div id="container">
     <%@ include file="/WEB-INF/views/includes/header.jsp" %>
-
     <div id="wrapper">
+ 
         <%@ include file="/WEB-INF/views/includes/navigation.jsp" %>
-        <div id="content">
-            <form name="editForm" method="post" action="<c:url value='/board/edit'/>" enctype="multipart/form-data" onsubmit="return validateForm('editForm')">
+       <div id="content">
+           <form name="editForm" method="post" action="<c:url value='/board/edit'/>" enctype="multipart/form-data" onsubmit="return validateForm('editForm')">
                 <input type="hidden" name="no" value="${board.no}">
                 <table border="1" width="580">
                     <tr>
